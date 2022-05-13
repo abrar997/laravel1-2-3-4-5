@@ -1,0 +1,106 @@
+controller //
+
+normall wwe write
+Route::get(
+'/user/profile',
+{ this part called call back function or clouser
+function(){
+return ' hello woeld'
+;}
+##insted this part we use controller to organize all these requests in classes called controller
+}
+);
+
+create by command line===> php artisan make:controller NameOfController
+
+
+for any bussiness logic need special controller
+
+Views//
+frontend work code
+
+any img css js folder put in public folder
+
+1)simple controler connect with routing
+Route::get('book',[BookController::class,'book'])->name('book');
+need to call the name of function
+
+
+
+2)Single Action Controllers
+use __invoke(){
+}
+and call the name of controller enough to work
+<!-- -------------------------------------------------------------------------------------- -->
+
+Controller with middleware
+** ==> just add ->middleware('name of it ') and every thing work normall
+two eays to use middleware with controller
+
+1) Middleware may be assigned to the controller's routes in your route files:
+Route::get('profile', [UserController::class, 'show'])->middleware('auth');
+
+
+2)Or, you may find it convenient to specify middleware within your controller's constructor.
+Using the middleware method within your controller's constructor,
+you can assign middleware to the controller's actions:
+<!-- #Middleware with controller by __construct -->
+<!-- in Controller.php -->
+// public function __construct()
+// {
+// $this->middleware('auth');
+// $this->middleware('log')->only('index'); #only this فقط هذا
+// $this->middleware('subscribed')->except('store'); //عدا هذا
+// }
+
+
+3)Controllers also allow you to register middleware using a closure. This provides a convenient way to define an inline middleware for a single controller without defining an entire middleware class:
+$this->middleware(function ($request, $next) {
+return $next($request);
+});
+<!-- =============================================================================================================== -->
+
+^^Resource Controllers==>back to Database
+If you think of each Eloquent model in your application as a "resource"
+imagine your application contains a Photo model and a Movie model. It is likely that users can create, read, update,
+or delete these resources.
+
+SO it's as create CRUD system
+<!-- add edit update craete destroy function to controller file  -->
+use when u want to dealing with eloquent or modal
+
+//to create controller resource use this command line ===> php artisan make:controller PhotoController --resource
+
+to craete table use ===> php artisan make:migration create_flights_table
+
+after any fix in database (table , ...) use ==>php artisan migrate:refresh
+
+
+
+.. ControllerResoursce==>
+1)create controller resource by php artisan make:controller PhotoController --resource
+2)craete Model
+3)create table by ==>php artisan make:migration create_flights_table
+4)refresh database to reload any adjusment by ==> php artisan migrate:refresh
+
+
+**** any paramete send by method of controller or route or closure must be parameter required in Route ****
+
+... custimazing model behavior '
+change 404 http request by redirect this page to another
+'
+
+...Specifying The Resource Model
+If you are using route model binding and would like the resource
+controller's methods to type-hint a model instance,
+you may use the --model option when generating the controller by::
+php artisan make:controller PhotoController --model=Photo --resource --requests
+
+..Partial Resource Routes -> by use only method ->only('','')
+
+
+
+
+
+
+

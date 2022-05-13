@@ -1,0 +1,62 @@
+Http (controller ,middlware)
+middleware::filtering HTTP requests (بوابة يمر من عنندة  الريكويست قبل ليوصل لل routing)
+/في جالة athenticated
+البراوزر راح يتاكد هل الشخص عمال login or not if not browser will redirect this user to login page
+else (if user login ) browser will redirect this user to app page
+middleware ==>Check
+** the main jobs of middlware are authentication and CSRF protection.
+
+
+\\ create middleware by cmd use ==> php artisan make:middleware NameOfMiddleware ==>this will craete php file  with this name and add inside it
+class with this name
+
+Request $request ==>from laravel dependecy injection
+Closure $next  =>Class used to represent anonymous functions. for next step
+
+حتى اخلي middleware يشتغل مع كل
+request اضيف اسم  middleware to Http/kernel
+
+
+حتي يشتفل بس عل صفحة وحدة اكتبو
+Route::get('user',function(){
+    return 'user page ';
+})->middleware(FisrtMiddlewareByMe::class);
+
+
+Global middleware use your middleware in Http/kernel.php
+or add to  protected $routeMiddleware = ['with alias name'=> NameOfMiddleware::class ]
+and use this alias name with any page u want
+
+in  kernel ^^
+1-any middleware write in 'web' or in   protected $middleware =  will apply on every reuest inside web.php result is
+infinity looping
+
+
+//To excluding  one route from all routing not apply middleware use withoutMiddleware()
+
+//Sorting middleware Rarely ==>نادرا نستخدمة
+
+
+//middleware parameters add parametr to middlware to varify user in authentication like name ...
+by create middleware to ensure user has role
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

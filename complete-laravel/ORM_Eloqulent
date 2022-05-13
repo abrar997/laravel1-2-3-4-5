@@ -1,0 +1,5 @@
+ORM ==> object relational mapper that makes it enjoyable to interact with your database.
+for any table in DB i can craete model or Eloquent
+When using Eloquent, each database table has a corresponding("Model")that is used to interact with that table
+addition to retrieving records from the database table, Eloquent models allow you to insert,
+update, and delete records from the table as wel

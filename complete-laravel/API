@@ -1,0 +1,2 @@
+API resource routes
+php artisan make:controller ApiController --api
